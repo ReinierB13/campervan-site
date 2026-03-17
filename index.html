@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+       SEO — REPLACE title and description if facts change
+  ============================================================ -->
+  <title>Aidez Gérard et Michelle à retrouver leur camping-car volé | Orsinval</title>
+  <meta name="description" content="Camping-car Peugeot Carado volé à Orsinval le 11 mars 2026. Immatriculation GS-091-VP (59). Merci de partager pour aider Gérard et Michelle à le retrouver.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://trouvez-notre-camping-car.fr">
+
+  <!-- ============================================================
+       OPEN GRAPH — Facebook, WhatsApp, LinkedIn previews
+       REPLACE: og:image URL once live (must be absolute URL, ~1200×630px)
+  ============================================================ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="fr_FR">
+  <meta property="og:url"         content="https://trouvez-notre-camping-car.fr">
+  <meta property="og:title"       content="Aidez Gérard et Michelle à retrouver leur camping-car volé | Orsinval">
+  <meta property="og:description" content="Camping-car Peugeot Carado volé à Orsinval le 11 mars 2026. Immatriculation GS-091-VP (59). Merci de partager.">
+  <meta property="og:image"       content="https://trouvez-notre-camping-car.fr/og-image.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"   content="Camping-car Peugeot Carado GS-091-VP — volé à Orsinval le 11 mars 2026">
+  <meta property="og:site_name"   content="Trouvez Notre Camping-Car">
+
+  <!-- ============================================================
+       TWITTER / X CARD
+  ============================================================ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Aidez Gérard et Michelle à retrouver leur camping-car volé">
+  <meta name="twitter:description" content="Volé à Orsinval (59) le 11 mars 2026. Peugeot Carado · GS-091-VP. Partagez pour aider.">
+  <meta name="twitter:image"       content="https://trouvez-notre-camping-car.fr/og-image.jpg">
+
+  <!-- ============================================================
+       FAVICON — replace with a real .ico or keep this SVG
+  ============================================================ -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — change colours & fonts here only
+    ============================================================ */
+    :root {
+      --accent:       #C62828;   /* urgent red  — REPLACE if you want a different accent */
+      --accent-dark:  #8E0000;
+      --accent-light: #FFEBEE;
+      --orange:       #E65100;   /* secondary warm accent */
+      --navy:         #1A237E;   /* French blue touch */
+      --bg:           #FAFAFA;
+      --surface:      #FFFFFF;
+      --text:         #1A1A1A;
+      --muted:        #5A5A5A;
+      --border:       #E0E0E0;
+      --radius:       8px;
+      --shadow:       0 2px 12px rgba(0,0,0,0.10);
+      --shadow-lg:    0 6px 28px rgba(0,0,0,0.18);
+      --max:          860px;
+      --font:         system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html   { scroll-behavior: smooth; }
+    body   { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.65; }
+    img    { display: block; max-width: 100%; height: auto; }
+    a      { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ============================================================
+       STICKY TOP BAR  (click-to-call + share on every scroll position)
+    ============================================================ */
+    .sticky-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--accent);
+      color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px;
+      height: 46px;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
+    }
+    .bar-label {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; flex: 1; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .bar-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .bar-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 6px 11px; border-radius: 4px;
+      font-size: 0.78rem; font-weight: 700; white-space: nowrap;
+      background: rgba(255,255,255,0.18); color: #fff;
+      transition: background 0.15s;
+    }
+    .bar-btn:hover { background: rgba(255,255,255,0.30); }
+    /* Call button stands out in white */
+    .bar-btn.call { background: #fff; color: var(--accent); }
+    .bar-btn.call:hover { background: #f5f5f5; }
+    /* Hide the call button on large screens — desktop users can see the contact section */
+    @media (min-width: 860px) { .bar-btn.call { display: none; } }
+
+    /* ============================================================
+       LAYOUT HELPERS
+    ============================================================ */
+    .section   { padding: 60px 20px; }
+    .container { max-width: var(--max); margin: 0 auto; }
+    .section-eyebrow {
+      text-align: center; font-size: 0.75rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 900; line-height: 1.2; margin-bottom: 32px;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 26px; border-radius: var(--radius);
+      font-size: 1rem; font-weight: 700; text-align: center;
+      transition: opacity 0.15s, transform 0.1s, background 0.15s;
+    }
+    .btn:active { transform: scale(0.96); }
+    .btn-call   { background: var(--accent);  color: #fff; box-shadow: 0 3px 14px rgba(198,40,40,0.40); }
+    .btn-call:hover { background: var(--accent-dark); }
+    .btn-wa     { background: #25D366; color: #fff; box-shadow: 0 3px 14px rgba(37,211,102,0.35); }
+    .btn-wa:hover { background: #1dba59; }
+    .btn-ghost  { background: rgba(255,255,255,0.14); color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.24); }
+    .btn-white  { background: #fff; color: var(--accent); }
+    .btn-white:hover { background: #f5f5f5; }
+
+    /* ============================================================
+       1. HERO SECTION
+    ============================================================ */
+    .hero {
+      margin-top: 46px; /* offset for sticky bar */
+      background: #111; color: #fff;
+      display: flex; flex-direction: column;
+    }
+
+    /* ---- Hero image ---- */
+    .hero-img-wrap { position: relative; }
+
+    /*
+      REPLACE: when you have the photo, uncomment <img> in HTML and remove .hero-placeholder.
+      Ideal: 1400×780px JPG, compressed to <200 KB.
+    */
+    .hero-img {
+      width: 100%; height: clamp(240px, 55vw, 540px);
+      object-fit: cover; object-position: center;
+      filter: brightness(0.70);
+    }
+    .hero-placeholder {
+      width: 100%; height: clamp(240px, 55vw, 540px);
+      background: linear-gradient(160deg, #2a2a2a 0%, #444 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: rgba(255,255,255,0.4);
+      font-size: 1rem; font-style: italic;
+    }
+    .hero-placeholder-icon { font-size: 3rem; opacity: 0.35; }
+
+    /* Plate badge overlaid on image */
+    .plate-badge {
+      position: absolute; bottom: 16px; right: 16px;
+      background: var(--accent); color: #fff;
+      font-size: clamp(1.1rem, 4vw, 1.5rem); font-weight: 900;
+      letter-spacing: 0.12em; padding: 8px 18px;
+      border-radius: 6px; border: 3px solid #fff;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ---- Hero content ---- */
+    .hero-body {
+      padding: 32px 20px 44px;
+      text-align: center;
+    }
+    .hero-urgency-tag {
+      display: inline-block; margin-bottom: 16px;
+      background: var(--accent); color: #fff;
+      font-size: 0.78rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      padding: 5px 14px; border-radius: 3px;
+    }
+    /* REPLACE: main French headline */
+    .hero-title {
+      font-size: clamp(1.65rem, 5.5vw, 2.8rem);
+      font-weight: 900; line-height: 1.15; margin-bottom: 14px;
+    }
+    /* REPLACE: subtitle */
+    .hero-sub {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: rgba(255,255,255,0.72); margin-bottom: 30px;
+      max-width: 580px; margin-left: auto; margin-right: auto;
+    }
+    .hero-sub strong { color: #fff; }
+    .hero-ctas {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+    }
+    /* stretch buttons on narrow screens */
+    @media (max-width: 420px) {
+      .hero-ctas .btn { flex: 1 1 140px; padding: 13px 12px; font-size: 0.9rem; }
+    }
+
+    /* ============================================================
+       2. KEY FACTS SECTION
+    ============================================================ */
+    .facts-section {
+      background: var(--surface);
+      border-top: 4px solid var(--accent);
+    }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .fact-card {
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 16px; text-align: center;
+    }
+    /* Highlight card for the registration plate */
+    .fact-card.red {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .fact-icon  { font-size: 1.9rem; margin-bottom: 8px; }
+    .fact-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin-bottom: 5px; }
+    .fact-value { font-size: 1.02rem; font-weight: 800; }
+    .fact-card.red .fact-value { color: var(--accent); font-size: 1.15rem; letter-spacing: 0.06em; }
+
+    /* ============================================================
+       3. STORY SECTION
+    ============================================================ */
+    .story-section { background: var(--bg); }
+    .story-inner { max-width: 650px; margin: 0 auto; }
+    .story-fr {
+      font-size: clamp(1rem, 2.5vw, 1.13rem);
+      line-height: 1.85; color: var(--text);
+    }
+    .story-fr p + p { margin-top: 1em; }
+    .lang-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 30px 0;
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--muted);
+    }
+    .lang-divider::before, .lang-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .story-en {
+      font-size: clamp(0.92rem, 2.2vw, 1.05rem);
+      line-height: 1.85; color: var(--muted); font-style: italic;
+    }
+    .story-en p + p { margin-top: 1em; }
+
+    /* ============================================================
+       4. DISTINCTIVE DETAILS SECTION
+    ============================================================ */
+    .details-section { background: var(--surface); }
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .detail-card {
+      border-left: 5px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--bg);
+      padding: 18px 20px;
+    }
+    /* Damage detail gets an orange/warning left border */
+    .detail-card.warning { border-left-color: var(--orange); }
+    .detail-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .detail-fr   { font-weight: 700; font-size: 0.98rem; color: var(--text); margin-bottom: 3px; }
+    .detail-en   { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+    /* ============================================================
+       5. PHOTO GALLERY SECTION
+    ============================================================ */
+    .gallery-section { background: #111; color: #fff; }
+    .gallery-section .section-title { color: #fff; }
+    .gallery-section .section-eyebrow { color: rgba(255,255,255,0.5); }
+
+    /*
+      REPLACE / ADD: each .gallery-item contains one photo.
+      Grid fills automatically — just add more items.
+    */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .gallery-item {
+      position: relative; border-radius: var(--radius);
+      overflow: hidden; aspect-ratio: 4/3; background: #222;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 12px 10px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      color: #fff; font-size: 0.82rem; font-weight: 600;
+    }
+    /* Placeholder shown until real photo is added */
+    .gallery-ph {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: rgba(255,255,255,0.30);
+      font-size: 0.85rem; font-style: italic; text-align: center; padding: 16px;
+    }
+    .gallery-ph-icon { font-size: 2.2rem; opacity: 0.35; }
+    .gallery-note {
+      margin-top: 16px; text-align: center;
+      color: rgba(255,255,255,0.38); font-size: 0.82rem; font-style: italic;
+    }
+
+    /* ============================================================
+       6. WHAT TO LOOK FOR SECTION
+    ============================================================ */
+    .lookfor-section { background: var(--navy); color: #fff; }
+    .lookfor-section .section-title    { color: #fff; }
+    .lookfor-section .section-eyebrow  { color: rgba(255,255,255,0.6); }
+    .lookfor-list { list-style: none; max-width: 620px; margin: 0 auto; }
+    .lookfor-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .lookfor-list li:last-child { border-bottom: none; }
+    .lf-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      background: rgba(255,255,255,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; margin-top: 1px;
+    }
+    .lf-fr  { font-weight: 600; font-size: 0.97rem; display: block; }
+    .lf-en  { font-size: 0.84rem; color: rgba(255,255,255,0.58); font-style: italic; display: block; margin-top: 2px; }
+
+    /* ============================================================
+       7. CONTACT SECTION
+    ============================================================ */
+    .contact-section { background: var(--accent); color: #fff; text-align: center; }
+    .contact-section .section-eyebrow { color: rgba(255,255,255,0.70); }
+    .contact-section .section-title   { color: #fff; }
+    /* REPLACE: name */
+    .contact-name {
+      font-size: 1.45rem; font-weight: 800; margin-bottom: 10px;
+    }
+    /* REPLACE: phone number (both href and display text) */
+    .contact-phone-link {
+      display: block;
+      font-size: clamp(1.8rem, 7vw, 3rem);
+      font-weight: 900; letter-spacing: 0.05em;
+      color: #fff; margin-bottom: 28px;
+    }
+    .contact-note-fr {
+      max-width: 520px; margin: 0 auto 10px;
+      font-size: 1rem; line-height: 1.65; opacity: 0.92;
+    }
+    .contact-note-en {
+      max-width: 520px; margin: 0 auto 30px;
+      font-size: 0.88rem; line-height: 1.65; opacity: 0.68; font-style: italic;
+    }
+
+    /* ============================================================
+       8. SHARE SECTION
+    ============================================================ */
+    .share-section { background: var(--surface); text-align: center; }
+    .share-intro-fr { max-width: 530px; margin: 0 auto 8px; font-size: 1.05rem; font-weight: 600; }
+    .share-intro-en { max-width: 530px; margin: 0 auto 28px; font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .share-btns {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+    }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: var(--radius);
+      font-size: 0.95rem; font-weight: 700; color: #fff;
+      min-width: 150px; justify-content: center;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .share-btn:hover  { opacity: 0.88; }
+    .share-btn:active { transform: scale(0.96); }
+    .sb-wa       { background: #25D366; }
+    .sb-fb       { background: #1877F2; }
+    .sb-email    { background: #555; }
+    .sb-twitter  { background: #000; }
+    .sb-copy     { background: var(--navy); }
+    .copy-ok {
+      display: none; margin-top: 14px;
+      color: #2E7D32; font-weight: 700; font-size: 0.95rem;
+    }
+    @media (max-width: 500px) {
+      .share-btns   { flex-direction: column; align-items: stretch; }
+      .share-btn    { min-width: 0; }
+    }
+
+    /* ============================================================
+       QR CODE SECTION — hidden by default
+       REPLACE: remove style="display:none" on #qr-section to activate.
+       Then swap the .qr-ph div for a real <img> of the QR code.
+    ============================================================ */
+    #qr-section { background: var(--bg); text-align: center; }
+    .qr-box {
+      display: inline-block; border: 2px solid var(--border);
+      border-radius: var(--radius); padding: 28px; background: #fff;
+    }
+    .qr-ph {
+      width: 160px; height: 160px; background: #eee; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: #aaa; font-size: 0.82rem; font-style: italic;
+      text-align: center; margin: 0 auto 12px;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #111; color: rgba(255,255,255,0.50);
+      text-align: center; padding: 28px 20px;
+      font-size: 0.82rem; line-height: 1.75;
+    }
+    .footer a { color: rgba(255,255,255,0.65); text-decoration: underline; }
+    /* REPLACE: police-ref — remove display:none once you have the reference number */
+    .police-ref { display: none; color: rgba(255,255,255,0.65); font-weight: 600; }
+    .last-updated { color: rgba(255,255,255,0.30); font-size: 0.78rem; margin-top: 6px; }
+
+    /* ============================================================
+       ACCESSIBILITY HELPERS
+    ============================================================ */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+    :focus-visible { outline: 3px solid #FFD600; outline-offset: 3px; }
+
+    /* ============================================================
+       RESPONSIVE — smaller screens
+    ============================================================ */
+    @media (max-width: 600px) {
+      .section { padding: 44px 16px; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+      .details-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       STICKY TOP BAR
+       REPLACE: phone number in href and bar-btn.call
+  ============================================================ -->
+  <div class="sticky-bar" role="banner" aria-label="Barre d'action rapide">
+    <span class="bar-label">🚨 Camping-car volé — GS-091-VP — Orsinval (59)</span>
+    <div class="bar-actions">
+      <!-- REPLACE: phone number -->
+      <a href="tel:+33684450910" class="bar-btn call" aria-label="Appeler Gérard">
+        📞 Appeler
+      </a>
+      <button class="bar-btn" onclick="shareNative()" aria-label="Partager cette page">
+        ↗ Partager
+      </button>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================================================
+         1. HERO SECTION
+         REPLACE: hero image — see comments inside
+    ============================================================ -->
+    <section class="hero" aria-labelledby="hero-h1">
+
+      <div class="hero-img-wrap">
+        <!--
+          ══════════════════════════════════════════════════
+          REPLACE: ADD YOUR HERO PHOTO
+          1. Save photo as: images/campervan-hero.jpg
+             (ideal size: 1400×780px, JPG, < 200 KB)
+          2. Delete the <div class="hero-placeholder"> below
+          3. Uncomment the <img> block below
+          ══════════════════════════════════════════════════
+          <img
+            src="images/campervan-hero.jpg"
+            alt="Camping-car Peugeot Carado GS-091-VP volé à Orsinval — vue générale"
+            class="hero-img"
+            width="1400" height="780"
+            fetchpriority="high"
+          >
+        -->
+        <div class="hero-placeholder" role="img" aria-label="Photo principale du camping-car — à ajouter">
+          <span class="hero-placeholder-icon">📷</span>
+          Photo principale du camping-car<br>
+          <small style="font-size:0.82rem;">(remplacer par images/campervan-hero.jpg)</small>
+        </div>
+
+        <!-- Registration plate badge — always visible over the photo -->
+        <div class="plate-badge" aria-label="Immatriculation : GS-091-VP">GS-091-VP</div>
+      </div>
+
+      <div class="hero-body">
+        <!-- REPLACE: urgency tag text if needed -->
+        <span class="hero-urgency-tag" aria-hidden="true">🚨 Véhicule volé</span>
+
+        <!-- REPLACE: main French title -->
+        <h1 class="hero-title" id="hero-h1">
+          Aidez Gérard et Michelle<br>à retrouver leur camping-car volé
+        </h1>
+
+        <!-- REPLACE: subtitle details -->
+        <p class="hero-sub">
+          Volé à Orsinval (59 – Nord) le 11 mars 2026 &nbsp;·&nbsp;
+          Peugeot Carado &nbsp;·&nbsp; <strong>GS-091-VP</strong>
+        </p>
+
+        <div class="hero-ctas">
+          <!-- REPLACE: phone number in href -->
+          <a href="tel:+33684450910" class="btn btn-call" aria-label="Appeler Gérard au +33 6 84 45 09 10">
+            📞 Appeler Gérard
+          </a>
+          <button class="btn btn-wa" onclick="shareWhatsApp()" aria-label="Partager sur WhatsApp">
+            💬 Partager sur WhatsApp
+          </button>
+          <a href="#details" class="btn btn-ghost" aria-label="Voir les détails du véhicule">
+            ↓ Voir les détails
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. KEY FACTS SECTION
+         REPLACE: each .fact-value content if details change
+    ============================================================ -->
+    <section class="section facts-section" id="faits" aria-labelledby="facts-h2">
+      <div class="container">
+        <p class="section-eyebrow">Informations clés</p>
+        <h2 class="section-title" id="facts-h2">Les faits</h2>
+        <div class="facts-grid">
+
+          <div class="fact-card">
+            <div class="fact-icon" aria-hidden="true">📍</div>
+            <div class="fact-label">Lieu du vol</div>
+            <!-- REPLACE: location -->
+            <div class="fact-value">Orsinval (59 – Nord)</div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon" aria-hidden="true">📅</div>
+            <div class="fact-label">Date</div>
+            <!-- REPLACE: date -->
+            <div class="fact-value">11 mars 2026</div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon" aria-hidden="true">🚐</div>
+            <div class="fact-label">Véhicule</div>
+            <!-- REPLACE: vehicle -->
+            <div class="fact-value">Peugeot Carado campervan</div>
+          </div>
+
+          <!-- Plate number — highlighted in red -->
+          <div class="fact-card red">
+            <div class="fact-icon" aria-hidden="true">🔴</div>
+            <div class="fact-label">Immatriculation</div>
+            <!-- REPLACE: registration plate -->
+            <div class="fact-value">GS-091-VP (59)</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. STORY SECTION
+         REPLACE: paragraph text in both language blocks
+    ============================================================ -->
+    <section class="section story-section" id="histoire" aria-labelledby="story-h2">
+      <div class="container">
+        <div class="story-inner">
+          <p class="section-eyebrow">Leur histoire</p>
+          <h2 class="section-title" id="story-h2">Ce qu'il s'est passé</h2>
+
+          <!-- French text -->
+          <div class="story-fr" lang="fr">
+            <!-- REPLACE: French story paragraphs -->
+            <p>
+              Gérard, âgé de <strong>80 ans</strong>, et son épouse Michelle se sont fait voler leur
+              camping-car à leur domicile à <strong>Orsinval (Nord)</strong> le <strong>11 mars 2026</strong>.
+            </p>
+            <p>
+              Ce n'était pas qu'un véhicule — c'était leur moyen de voyager, leur liberté,
+              et une part importante de leur vie à deux.
+            </p>
+            <p>Aujourd'hui, ils ont besoin de votre aide.</p>
+          </div>
+
+          <div class="lang-divider" aria-hidden="true">English version below</div>
+
+          <!-- English text -->
+          <div class="story-en" lang="en">
+            <!-- REPLACE: English story paragraphs -->
+            <p>
+              Gérard, <strong>80 years old</strong>, and his wife Michelle had their campervan stolen
+              from their home in <strong>Orsinval (North of France)</strong> on <strong>11 March 2026</strong>.
+            </p>
+            <p>
+              This was not just a vehicle — it was their way of travelling, their independence,
+              and a big part of their life together.
+            </p>
+            <p>Today, they need your help.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. DISTINCTIVE DETAILS SECTION
+         REPLACE / ADD: copy a .detail-card block to add more identifying features
+    ============================================================ -->
+    <section class="section details-section" id="details" aria-labelledby="details-h2">
+      <div class="container">
+        <p class="section-eyebrow">Pour l'identifier</p>
+        <h2 class="section-title" id="details-h2">Signes distinctifs</h2>
+        <div class="details-grid">
+
+          <!-- Detail 1: Thule shade panel -->
+          <div class="detail-card">
+            <div class="detail-icon" aria-hidden="true">☀️</div>
+            <!-- REPLACE: French detail -->
+            <div class="detail-fr">Panneau d'ombrage Thule</div>
+            <!-- REPLACE: English translation -->
+            <div class="detail-en">Thule shade panel</div>
+          </div>
+
+          <!-- Detail 2: Air conditioning -->
+          <div class="detail-card">
+            <div class="detail-icon" aria-hidden="true">❄️</div>
+            <div class="detail-fr">Climatisation</div>
+            <div class="detail-en">Air conditioning</div>
+          </div>
+
+          <!-- Detail 3: Damage — orange warning border -->
+          <div class="detail-card warning">
+            <div class="detail-icon" aria-hidden="true">⚠️</div>
+            <div class="detail-fr">Rayures et légère déformation sur le portillon latéral droit</div>
+            <div class="detail-en">Scratches and slight deformation on the right-side lateral hatch / storage door</div>
+          </div>
+
+          <!--
+            ADD MORE DETAILS: copy a .detail-card block above here.
+            Use class="detail-card warning" for damage-related items.
+          -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. PHOTO GALLERY SECTION
+         REPLACE: for each photo slot, delete .gallery-ph div and
+                  uncomment the <img> + <div class="gallery-caption"> beneath it.
+         ADD MORE PHOTOS: copy a .gallery-item block anywhere in .gallery-grid.
+    ============================================================ -->
+    <section class="section gallery-section" id="photos" aria-labelledby="gallery-h2">
+      <div class="container">
+        <p class="section-eyebrow">Identifiez le véhicule</p>
+        <h2 class="section-title" id="gallery-h2">Photos du camping-car</h2>
+
+        <div class="gallery-grid">
+
+          <!-- ─── PHOTO 1 ─── -->
+          <div class="gallery-item">
+            <!--
+              REPLACE: save photo as images/campervan-1.jpg then uncomment below.
+              <img
+                src="images/campervan-1.jpg"
+                alt="Camping-car Peugeot Carado GS-091-VP — vue de face"
+                loading="lazy" width="800" height="600"
+              >
+              <div class="gallery-caption">Vue de face / Front view</div>
+            -->
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">📷</span>
+              Photo 1 · images/campervan-1.jpg
+            </div>
+          </div>
+
+          <!-- ─── PHOTO 2 ─── -->
+          <div class="gallery-item">
+            <!--
+              REPLACE: save photo as images/campervan-2.jpg then uncomment below.
+              <img
+                src="images/campervan-2.jpg"
+                alt="Camping-car Peugeot Carado GS-091-VP — vue de côté"
+                loading="lazy" width="800" height="600"
+              >
+              <div class="gallery-caption">Vue de côté / Side view</div>
+            -->
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">📷</span>
+              Photo 2 · images/campervan-2.jpg
+            </div>
+          </div>
+
+          <!-- ─── PHOTO 3 ─── -->
+          <div class="gallery-item">
+            <!--
+              REPLACE: save photo as images/campervan-3.jpg then uncomment below.
+              Focus on the damaged right-side hatch — very useful for identification.
+              <img
+                src="images/campervan-3.jpg"
+                alt="Portillon latéral droit endommagé — rayures et déformation"
+                loading="lazy" width="800" height="600"
+              >
+              <div class="gallery-caption">Portillon droit endommagé / Damaged right-side hatch</div>
+            -->
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">📷</span>
+              Photo 3 · images/campervan-3.jpg<br>
+              <small>(portillon droit endommagé)</small>
+            </div>
+          </div>
+
+          <!--
+            ─── ADD MORE PHOTOS ───
+            Copy and paste a .gallery-item block here.
+            The grid reflows automatically.
+            Example:
+            <div class="gallery-item">
+              <img
+                src="images/campervan-4.jpg"
+                alt="Description de la photo"
+                loading="lazy" width="800" height="600"
+              >
+              <div class="gallery-caption">Légende / Caption</div>
+            </div>
+          -->
+
+        </div>
+        <p class="gallery-note">
+          Consultez les commentaires dans le HTML (section #photos) pour ajouter des photos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. WHAT TO LOOK FOR SECTION
+         REPLACE: .lf-fr and .lf-en text to update tips
+    ============================================================ -->
+    <section class="section lookfor-section" id="chercher" aria-labelledby="lookfor-h2">
+      <div class="container">
+        <p class="section-eyebrow">Où chercher</p>
+        <h2 class="section-title" id="lookfor-h2">Comment aider concrètement</h2>
+
+        <ul class="lookfor-list" role="list">
+          <li>
+            <span class="lf-icon" aria-hidden="true">🏕</span>
+            <span>
+              <span class="lf-fr">Vérifiez les campings et aires de camping-car</span>
+              <span class="lf-en">Check campsites and motorhome stopover areas</span>
+            </span>
+          </li>
+          <li>
+            <span class="lf-icon" aria-hidden="true">🅿️</span>
+            <span>
+              <span class="lf-fr">Regardez dans les parkings et zones de stationnement</span>
+              <span class="lf-en">Check parking areas and car parks</span>
+            </span>
+          </li>
+          <li>
+            <span class="lf-icon" aria-hidden="true">🛣</span>
+            <span>
+              <span class="lf-fr">Surveillez les aires de repos le long des routes et autoroutes</span>
+              <span class="lf-en">Watch roadside lay-bys and motorway rest areas</span>
+            </span>
+          </li>
+          <li>
+            <span class="lf-icon" aria-hidden="true">🔍</span>
+            <span>
+              <span class="lf-fr">Attention : les plaques d'immatriculation peuvent avoir été changées — fiez-vous aux dommages visibles</span>
+              <span class="lf-en">Watch for changed plates — identify it by the visible damage instead</span>
+            </span>
+          </li>
+          <li>
+            <span class="lf-icon" aria-hidden="true">⚠️</span>
+            <span>
+              <span class="lf-fr">Repérez particulièrement les dommages sur le portillon latéral droit (rayures et légère déformation)</span>
+              <span class="lf-en">Pay special attention to the damaged right-side lateral hatch (scratches and slight deformation)</span>
+            </span>
+          </li>
+          <li>
+            <span class="lf-icon" aria-hidden="true">☀️</span>
+            <span>
+              <span class="lf-fr">Cherchez le panneau d'ombrage Thule caractéristique sur le toit</span>
+              <span class="lf-en">Look for the distinctive Thule shade panel on the roof</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. CONTACT SECTION
+         REPLACE: name, phone number in three places (link href, display, aria-label)
+    ============================================================ -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-h2">
+      <div class="container" style="text-align:center;">
+        <p class="section-eyebrow">Vous avez vu ce véhicule ?</p>
+        <h2 class="section-title" id="contact-h2">Contactez Gérard immédiatement</h2>
+
+        <!-- REPLACE: contact name -->
+        <p class="contact-name">Gérard Le Blonde</p>
+
+        <!-- REPLACE: phone number in href and display text -->
+        <a
+          href="tel:+33684450910"
+          class="contact-phone-link"
+          aria-label="Appeler Gérard Le Blonde au +33 6 84 45 09 10"
+        >
+          +33 6 84 45 09 10
+        </a>
+
+        <!-- REPLACE: French contact note -->
+        <p class="contact-note-fr" lang="fr">
+          Si vous voyez ce véhicule ou avez la moindre information, merci de contacter
+          Gérard Le Blonde dès que possible.
+        </p>
+
+        <!-- REPLACE: English contact note -->
+        <p class="contact-note-en" lang="en">
+          If you see this vehicle or have any information, please contact
+          Gérard Le Blonde as soon as possible.
+        </p>
+
+        <!-- REPLACE: phone number in href -->
+        <a
+          href="tel:+33684450910"
+          class="btn btn-white"
+          style="font-size:1.1rem; padding:16px 36px;"
+          aria-label="Appeler maintenant"
+        >
+          📞 Appeler maintenant / Call now
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. SHARE SECTION
+         REPLACE: share text if needed (also update JS constants at bottom)
+    ============================================================ -->
+    <section class="section share-section" id="partager" aria-labelledby="share-h2">
+      <div class="container">
+        <p class="section-eyebrow">Aidez à faire circuler</p>
+        <h2 class="section-title" id="share-h2">Partagez cette page</h2>
+
+        <!-- REPLACE: share intro text French -->
+        <p class="share-intro-fr">
+          Merci de partager cette page — cela prend 2 secondes et peut aider
+          Gérard et Michelle à retrouver leur camping-car.
+        </p>
+        <!-- REPLACE: share intro text English -->
+        <p class="share-intro-en">
+          Please share this page — it takes 2 seconds and could help
+          Gérard and Michelle get their campervan back.
+        </p>
+
+        <div class="share-btns" role="group" aria-label="Boutons de partage">
+          <button class="share-btn sb-wa"      onclick="shareWhatsApp()" aria-label="Partager sur WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </button>
+          <button class="share-btn sb-fb"      onclick="shareFacebook()" aria-label="Partager sur Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+          <button class="share-btn sb-twitter" onclick="shareTwitter()"  aria-label="Partager sur X / Twitter">
+            𝕏 Twitter / X
+          </button>
+          <button class="share-btn sb-email"   onclick="shareEmail()"   aria-label="Partager par e-mail">
+            ✉️ E-mail
+          </button>
+          <button class="share-btn sb-copy"    onclick="copyLink()"     aria-label="Copier le lien">
+            🔗 Copier le lien
+          </button>
+        </div>
+
+        <p class="copy-ok" id="copy-ok" role="status" aria-live="polite">
+          ✅ Lien copié dans le presse-papier !
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         QR CODE SECTION — OPTIONAL
+         REPLACE: change style="display:none" → style="display:block" to activate.
+         Then swap .qr-ph for <img src="images/qr-code.png" ...>
+    ============================================================ -->
+    <section class="section" id="qr-section" style="display:none;" aria-labelledby="qr-h2">
+      <div class="container" style="text-align:center;">
+        <p class="section-eyebrow">Partagez hors ligne</p>
+        <h2 class="section-title" id="qr-h2">QR Code</h2>
+        <div class="qr-box">
+          <!--
+            REPLACE: swap the div below with:
+            <img
+              src="images/qr-code.png"
+              alt="QR Code — trouvez-notre-camping-car.fr"
+              width="160" height="160"
+            >
+          -->
+          <div class="qr-ph" role="img" aria-label="QR code à générer">QR Code<br>à générer</div>
+          <p style="font-size:0.85rem; color:#666; margin-top:4px;">
+            Scannez pour ouvrir cette page<br>
+            <small style="color:#aaa;">trouvez-notre-camping-car.fr</small>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       REPLACE: uncomment .police-ref once you have the reference number
+       REPLACE: update last-updated date after each edit
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <p>
+      Cette page a été créée pour aider à retrouver un véhicule volé.
+      &nbsp;|&nbsp;
+      <a href="#contact">Contacter Gérard</a>
+      &nbsp;|&nbsp;
+      <a href="#partager">Partager</a>
+    </p>
+
+    <!--
+      REPLACE: remove style="display:none" and fill in reference once available.
+      <p class="police-ref" style="display:block;">
+        Référence de plainte : XXXX-XXXX — Gendarmerie d'Avesnes-sur-Helpe
+      </p>
+    -->
+
+    <!-- REPLACE: update this date after each content edit -->
+    <p class="last-updated">Dernière mise à jour : 17 mars 2026</p>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — share functions & native share API
+       REPLACE: PAGE_URL after going live
+       REPLACE: share text if wording changes
+  ============================================================ -->
+  <script>
+    // ── REPLACE: update when the domain is live ──────────────────
+    const PAGE_URL   = 'https://trouvez-notre-camping-car.fr';
+    const PAGE_TITLE = 'Aidez Gérard et Michelle à retrouver leur camping-car volé | Orsinval';
+
+    // ── REPLACE: update share text if the story changes ──────────
+    const SHARE_FR = '🚨 Camping-car Peugeot Carado volé à Orsinval (59) le 11/03/2026.\nImmatriculation : GS-091-VP.\nMerci de partager pour aider Gérard et Michelle !';
+    const SHARE_EN = '🚨 Campervan stolen in Orsinval, France on 11/03/2026.\nPlate: GS-091-VP.\nPlease share to help Gérard and Michelle!';
+    const SHARE_FULL = SHARE_FR + '\n\n' + SHARE_EN;
+
+    // Native Share API (mobile browsers: iOS Safari, Android Chrome)
+    function shareNative() {
+      if (navigator.share) {
+        navigator.share({
+          title: PAGE_TITLE,
+          text:  SHARE_FULL,
+          url:   PAGE_URL,
+        }).catch(() => {
+          // User cancelled or error — silent fail
+        });
+      } else {
+        // Fallback on desktop: scroll to share section
+        document.getElementById('partager').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function shareWhatsApp() {
+      const text = encodeURIComponent(SHARE_FULL + '\n' + PAGE_URL);
+      window.open('https://wa.me/?text=' + text, '_blank', 'noopener,noreferrer');
+    }
+
+    function shareFacebook() {
+      const url = encodeURIComponent(PAGE_URL);
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank', 'noopener,noreferrer');
+    }
+
+    function shareTwitter() {
+      const text = encodeURIComponent(SHARE_FR + '\n' + PAGE_URL);
+      window.open('https://twitter.com/intent/tweet?text=' + text, '_blank', 'noopener,noreferrer');
+    }
+
+    function shareEmail() {
+      // REPLACE: subject / body wording if needed
+      const subject = encodeURIComponent('Camping-car volé — Aidez Gérard et Michelle');
+      const body    = encodeURIComponent(
+        'Bonjour,\n\nJe vous partage cette page pour aider Gérard et Michelle à retrouver leur camping-car volé :\n\n' +
+        PAGE_URL + '\n\n' + SHARE_FULL
+      );
+      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+    }
+
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(PAGE_URL);
+      } catch {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = PAGE_URL;
+        ta.style.cssText = 'position:fixed;opacity:0;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const el = document.getElementById('copy-ok');
+      el.style.display = 'block';
+      setTimeout(() => { el.style.display = 'none'; }, 3000);
+    }
+  </script>
+
+</body>
+</html>
