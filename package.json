@@ -1,0 +1,23 @@
+{
+  "name": "campervan-site",
+  "version": "1.0.0",
+  "description": "Static website to help recover a stolen campervan belonging to Gérard and Michelle Le Blonde.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReinierB13/campervan-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReinierB13/campervan-site/issues"
+  },
+  "homepage": "https://github.com/ReinierB13/campervan-site#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
